@@ -1,158 +1,425 @@
 @use './variables' as *;
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// ─── Summer Palette ──────────────────────────────────────────────────────────
+$bg:          #FDF6EE;
+$bg-card:     #FAF0E4;
+$border:      rgba(180, 140, 100, 0.18);
+$text:        #3A2E28;
+$text-mid:    #7A6558;
+$text-soft:   #B0998A;
+$peach:       #F4A57A;
+$sage:        #7DBF9E;
+$butter:      #E8C547;
+$sky:         #89C4D8;
+$rose:        #E8929A;
 
-html, body, #root {
-  height: 100%;
-  width: 100%;
-}
+// ─── Base ────────────────────────────────────────────────────────────────────
 
-.dev-root {
+.dev-page {
   min-height: 100vh;
   width: 100%;
-  background-color: $lavender;
+  background-color: $bg;
   background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, 0.35) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(168, 150, 190, 0.4) 0%, transparent 50%),
-    radial-gradient(ellipse at 60% 85%, rgba(123, 94, 167, 0.15) 0%, transparent 50%);
+    radial-gradient(ellipse at 10% 20%, rgba(244, 165, 122, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 60%, rgba(137, 196, 216, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 95%, rgba(125, 191, 158, 0.1) 0%, transparent 50%);
+  color: $text;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+// ─── Nav ─────────────────────────────────────────────────────────────────────
+
+.dev-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-family: 'DM Sans', sans-serif;
-  position: relative;
-  overflow: hidden;
+  justify-content: space-between;
+  padding: 1.2rem 2.5rem;
+  background: rgba(253, 246, 238, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid $border;
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
 
-  &::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.6;
+  &.visible { opacity: 1; }
+
+  &__back {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $text-soft;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover { color: $peach; }
+  }
+
+  &__name {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $text-soft;
   }
 }
 
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
+// ─── Hero ─────────────────────────────────────────────────────────────────────
 
-  &-1 {
-    width: 420px;
-    height: 420px;
-    top: -120px;
-    right: -100px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, transparent 70%);
+.dev-hero {
+  padding: 14rem 2.5rem 6rem;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  &__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: $peach;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease-in, transform 0.4s ease-in;
+    transition-delay: 0.2s;
+
+    &.visible { opacity: 1; transform: translateY(0); }
   }
 
-  &-2 {
-    width: 280px;
-    height: 280px;
-    bottom: -60px;
-    left: -60px;
-    background: radial-gradient(circle, rgba(123, 94, 167, 0.18) 0%, transparent 70%);
+  &__heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 14vw, 13rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2em;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-in, transform 0.4s ease-in;
+    transition-delay: 0.4s;
+
+    &.visible { opacity: 1; transform: translateY(0); }
+
+    &--outline {
+      -webkit-text-stroke: 2px $text;
+      color: transparent;
+    }
+
+    &--fill { color: $text; }
+
+    &--accent { color: $peach; }
   }
 }
 
-.content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-}
+// ─── Section label ────────────────────────────────────────────────────────────
 
-.back-link {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: $text-light;
-  text-decoration: none;
-  margin-bottom: 2rem;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity $transition, transform $transition, color $transition;
-  transition-delay: 0s;
-
-  &:hover { color: $text-dark; }
-  &.visible { opacity: 1; transform: translateY(0); }
-}
-
-.heading {
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: clamp(3.2rem, 8vw, 6.5rem);
-  line-height: 0.92;
-  letter-spacing: -0.01em;
-  color: $text-dark;
-  margin-bottom: 2.2rem;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity $transition, transform $transition;
-  transition-delay: 0.4s;
-
-  &.visible { opacity: 1; transform: translateY(0); }
-}
-
-.divider {
-  width: 32px;
-  height: 1px;
-  background: $lavender-deep;
-  margin: 0 auto 2rem;
-  opacity: 0;
-  transform: scaleX(0);
-  transition: opacity $transition, transform $transition;
-  transition-delay: 0.8s;
-
-  &.visible { opacity: 1; transform: scaleX(1); }
-}
-
-.subheading {
-  font-family: 'DM Sans', sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  font-weight: 300;
-  color: $text-mid;
-  letter-spacing: 0.04em;
-  margin-bottom: 3rem;
-  max-width: 380px;
-  line-height: 1.6;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity $transition, transform $transition;
-  transition-delay: 1.2s;
-
-  &.visible { opacity: 1; transform: translateY(0); }
-}
-
-.footer-mark {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.55rem;
+.dev-section-label {
+  font-size: 0.65rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: $text-light;
+  color: $text-soft;
+  margin-bottom: 3rem;
   opacity: 0;
-  transition: opacity $transition;
-  transition-delay: 1.6s;
-  z-index: 2;
-  white-space: nowrap;
+  transition: opacity 0.4s ease-in;
 
-  &.visible { opacity: 0.6; }
+  &.visible { opacity: 1; }
+}
+
+// ─── About ───────────────────────────────────────────────────────────────────
+
+.dev-about {
+  padding: 5rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-top: 1px solid $border;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  &__text {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.4s ease-in, transform 0.4s ease-in;
+
+    &.visible { opacity: 1; transform: translateY(0); }
+
+    p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: $text-mid;
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  &__tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.4s ease-in, transform 0.4s ease-in;
+    transition-delay: 0.15s;
+
+    &.visible { opacity: 1; transform: translateY(0); }
+  }
+}
+
+.dev-tag {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid $border;
+  color: $text-mid;
+  background: $bg-card;
+  transition: all 0.3s ease;
+
+  &:nth-child(1):hover { border-color: $peach;  color: $peach; }
+  &:nth-child(2):hover { border-color: $sage;   color: $sage; }
+  &:nth-child(3):hover { border-color: $butter; color: $butter; }
+  &:nth-child(4):hover { border-color: $sky;    color: $sky; }
+  &:nth-child(5):hover { border-color: $rose;   color: $rose; }
+}
+
+// ─── Skills ──────────────────────────────────────────────────────────────────
+
+.dev-skills {
+  padding: 5rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-top: 1px solid $border;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 600px) { grid-template-columns: 1fr; }
+  }
+}
+
+.dev-skill-card {
+  background: $bg-card;
+  border: 1px solid $border;
+  padding: 1.8rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease-in, transform 0.4s ease-in, border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &.visible { opacity: 1; transform: translateY(0); }
+
+  &:hover {
+    border-color: $peach;
+    box-shadow: 0 4px 24px rgba(244, 165, 122, 0.12);
+  }
+
+  &__name {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $text-mid;
+    margin-bottom: 1rem;
+  }
+
+  &__bar-track {
+    height: 3px;
+    background: rgba(180, 140, 100, 0.15);
+    width: 100%;
+    margin-bottom: 0.6rem;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  &__bar-fill {
+    height: 100%;
+    width: var(--fill-width);
+    background: var(--fill-color);
+    border-radius: 2px;
+    transition: width 1s ease-in;
+  }
+
+  &__level {
+    font-size: 0.7rem;
+    color: $text-soft;
+    text-align: right;
+  }
+}
+
+// ─── Projects ────────────────────────────────────────────────────────────────
+
+.dev-projects {
+  padding: 5rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-top: 1px solid $border;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 768px) { grid-template-columns: 1fr; }
+  }
+}
+
+.dev-project-card {
+  position: relative;
+  background: $bg-card;
+  border: 1px solid $border;
+  padding: 2rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease-in, transform 0.4s ease-in, border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+
+  &.visible { opacity: 1; transform: translateY(0); }
+
+  &:nth-child(1):hover { border-color: $peach;  box-shadow: 0 4px 24px rgba(244,165,122,0.15); }
+  &:nth-child(2):hover { border-color: $sage;   box-shadow: 0 4px 24px rgba(125,191,158,0.15); }
+  &:nth-child(3):hover { border-color: $sky;    box-shadow: 0 4px 24px rgba(137,196,216,0.15); }
+  &:nth-child(4):hover { border-color: $rose;   box-shadow: 0 4px 24px rgba(232,146,154,0.15); }
+
+  &:hover .dev-project-card__arrow {
+    transform: translate(4px, -4px);
+    color: $peach;
+  }
+
+  &__number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: rgba(180, 140, 100, 0.1);
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+  }
+
+  &__title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    color: $text;
+    margin: 0;
+  }
+
+  &__desc {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: $text-mid;
+    margin: 0;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+  }
+
+  &__tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    background: rgba(180, 140, 100, 0.08);
+    color: $text-soft;
+    border-radius: 2px;
+  }
+
+  &__arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.2rem;
+    color: $text-soft;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+}
+
+// ─── Contact ─────────────────────────────────────────────────────────────────
+
+.dev-contact {
+  padding: 5rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-top: 1px solid $border;
+
+  &__inner {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.4s ease-in, transform 0.4s ease-in;
+
+    &.visible { opacity: 1; transform: translateY(0); }
+  }
+
+  &__heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.9;
+    color: $text;
+    margin-bottom: 2rem;
+
+    span { color: $peach; }
+  }
+
+  &__email {
+    display: inline-block;
+    font-size: 1.1rem;
+    color: $sage;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(125, 191, 158, 0.35);
+    padding-bottom: 0.2rem;
+    margin-bottom: 2rem;
+    transition: border-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      color: darken($sage, 10%);
+      border-color: $sage;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 2rem;
+
+    a {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: $text-soft;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover { color: $text; }
+    }
+  }
+}
+
+// ─── Footer ──────────────────────────────────────────────────────────────────
+
+.dev-footer {
+  padding: 2rem 2.5rem;
+  border-top: 1px solid $border;
+  text-align: center;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $text-soft;
 }
