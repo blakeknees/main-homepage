@@ -74,17 +74,25 @@ export default function Dev() {
             <p>Hi, I'm Jennifer — a developer who loves building clean, thoughtful digital experiences. I care about the details: the spacing, the transitions, the way something feels when you use it.</p>
             <p>Replace this with your real bio. Talk about what drives you, what you've worked on, what you're excited about next.</p>
           </div>
-          <div className={`dev-about__tag-cloud ${v}`}>
-            {["Creative", "Detail-oriented", "Problem solver", "Collaborator", "Curious"].map((tag) => (
-              <span key={tag} className="dev-tag">{tag}</span>
-            ))}
-          </div>
+
+          <div className={`dev-about__text ${v}`}>
+            <div className={`dev-section-label ${v}`}>002 — Resume</div>
+            <p>Hi, I'm Jennifer — a developer who loves building clean, thoughtful digital experiences. I care about the details: the spacing, the transitions, the way something feels when you use it.</p>
+            <p>Replace this with your real bio. Talk about what drives you, what you've worked on, what you're excited about next.</p>
+          </div>    
         </div>
+
       </section>
+
 
       {/* Skills */}
       <section className="dev-skills">
         <div className={`dev-section-label ${v}`}>002 — Skills</div>
+        <div className={`dev-about__tag-cloud ${v}`}>
+            {["Creative", "Detail-oriented", "Problem solver", "Collaborator", "Curious"].map((tag) => (
+              <span key={tag} className="dev-tag">{tag}</span>
+            ))}
+          </div>
         <div className="dev-skills__grid">
           {skills.map((skill, i) => (
             <div key={skill.name} className={`dev-skill-card ${v}`} style={{ transitionDelay: `${0.1 * i}s` }}>
