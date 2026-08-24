@@ -86,31 +86,6 @@ $rose:        #E8929A;
 
     &.visible { opacity: 1; transform: translateY(0); }
   }
-
-  &__heading {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(5rem, 14vw, 13rem);
-    line-height: 0.9;
-    letter-spacing: 0.02em;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.2em;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease-in, transform 0.4s ease-in;
-    transition-delay: 0.4s;
-
-    &.visible { opacity: 1; transform: translateY(0); }
-
-    &--outline {
-      -webkit-text-stroke: 2px $text;
-      color: transparent;
-    }
-
-    &--fill { color: $text; }
-
-    &--accent { color: $peach; }
-  }
 }
 
 // ─── Section label ────────────────────────────────────────────────────────────

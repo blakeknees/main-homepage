@@ -57,13 +57,9 @@ export default function Dev() {
 
       {/* Hero */}
       <section className="dev-hero">
-        <div className={`dev-hero__label ${v}`}>Software Development</div>
-        <h1 className={`dev-hero__heading ${v}`}>
-          <span className="dev-hero__heading--outline">I build</span>
-          <span className="dev-hero__heading--fill">things</span>
-          <span className="dev-hero__heading--outline">for the</span>
-          <span className="dev-hero__heading--accent">web.</span>
-        </h1>
+        <div className={`dev-hero__label ${v}`}>
+          <h1>Web & Email Developer</h1>
+         </div>
       </section>
 
       {/* About */}
@@ -71,14 +67,10 @@ export default function Dev() {
         <div className={`dev-section-label ${v}`}>001 — About</div>
         <div className="dev-about__grid">
           <div className={`dev-about__text ${v}`}>
-            <p>Hi, I'm Jennifer — a developer who loves building clean, thoughtful digital experiences. I care about the details: the spacing, the transitions, the way something feels when you use it.</p>
-            <p>Replace this with your real bio. Talk about what drives you, what you've worked on, what you're excited about next.</p>
-          </div>
-
-          <div className={`dev-about__text ${v}`}>
-            <div className={`dev-section-label ${v}`}>002 — Resume</div>
-            <p>Hi, I'm Jennifer — a developer who loves building clean, thoughtful digital experiences. I care about the details: the spacing, the transitions, the way something feels when you use it.</p>
-            <p>Replace this with your real bio. Talk about what drives you, what you've worked on, what you're excited about next.</p>
+            <p>Based in Hamilton, Ontario, I have over 4 years of web, email and software development experience. Accessibility is what inspired me to become a developer, specifically AAC devices, and I love building from-scratch websites and emails that create connections and conversions.</p>
+            <p>Currently I work as a Campaign Manager at Publicis Groupe, which is really a client-facing email developer position. I build and QA emails, and work with the clients and our creative team to meet all standards prior to deployment.</p>
+            <p>I'm interested in continuing to develop my technical skills as both a front-end and HTML email developer, as well as get into back-end languages and frameworks.</p>
+            <p>Previously I have worked as a copywriter, cannabis educator, and pastry chef.</p>
           </div>    
         </div>
 
