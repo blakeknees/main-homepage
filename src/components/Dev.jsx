@@ -64,7 +64,7 @@ export default function Dev() {
 
       {/* About */}
       <section className="dev-about">
-        <div className={`dev-section-label ${v}`}>001 — About</div>
+        <div className={`dev-section-label ${v}`}>About</div>
         <div className="dev-about__grid">
           <div className={`dev-about__text ${v}`}>
             <p>Based in Hamilton, Ontario, I have over 4 years of web, email and software development experience. Accessibility is what inspired me to become a developer, specifically AAC devices, and I love building from-scratch websites and emails that create connections and conversions.</p>
@@ -79,7 +79,7 @@ export default function Dev() {
 
       {/* Skills */}
       <section className="dev-skills">
-        <div className={`dev-section-label ${v}`}>002 — Skills</div>
+        <div className={`dev-section-label ${v}`}>Skills</div>
         <div className={`dev-about__tag-cloud ${v}`}>
             {["Creative", "Detail-oriented", "Problem solver", "Collaborator", "Curious"].map((tag) => (
               <span key={tag} className="dev-tag">{tag}</span>
@@ -103,7 +103,7 @@ export default function Dev() {
 
       {/* Projects */}
       <section className="dev-projects">
-        <div className={`dev-section-label ${v}`}>003 — Projects</div>
+        <div className={`dev-section-label ${v}`}>Projects</div>
         <div className="dev-projects__grid">
           {projects.map((project, i) => (
             <a
@@ -128,11 +128,12 @@ export default function Dev() {
 
       {/* Contact */}
       <section className="dev-contact">
-        <div className={`dev-section-label ${v}`}>004 — Contact</div>
+        <div className={`dev-section-label ${v}`}>Contact</div>
         <div className={`dev-contact__inner ${v}`}>
           <h2 className="dev-contact__heading">Let's work<br /><span>together.</span></h2>
-          <a href="mailto:your@email.com" className="dev-contact__email">your@email.com</a>
+          <a href="mailto:jenniferblakney@gmail.com" className="dev-contact__email">jenniferblakney@gmail.com</a>
           <div className="dev-contact__links">
+            <a href="#" target="_blank" rel="noopener noreferrer">Resume</a>
             <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
