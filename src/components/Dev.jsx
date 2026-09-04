@@ -68,9 +68,10 @@ export default function Dev() {
         <div className="dev-about__grid">
           <div className={`dev-about__text ${v}`}>
             <p>Based in Hamilton, Ontario, I have over 4 years of web, email and software development experience. Accessibility is what inspired me to become a developer, specifically AAC devices, and I love building from-scratch websites and emails that create connections and conversions.</p>
-            <p>Currently I work as a Campaign Manager at Publicis Groupe, which is really a client-facing email developer position. I build and QA emails, and work with the clients and our creative team to meet all standards prior to deployment.</p>
+            <p>Currently I work as a Campaign Manager at Publicis Groupe, which is a client-facing email developer position. I build and QA emails, and work with the clients and our creative team to meet all standards prior to deployment.</p>
             <p>I'm interested in continuing to develop my technical skills as both a front-end and HTML email developer, as well as get into back-end languages and frameworks.</p>
-            <p>Previously I have worked as a copywriter, cannabis educator, and pastry chef.</p>
+            <p>Previously I have worked as a copywriter, cannabis educator and product developer, and pastry chef.</p>
+            <p>Outside of coding I enjoy time with my partner and two rescue Korean Jindos. I love to cook, watch NFL/CFL, and I'm learning how to solder.</p>
           </div>    
         </div>
 
@@ -80,11 +81,7 @@ export default function Dev() {
       {/* Skills */}
       <section className="dev-skills">
         <div className={`dev-section-label ${v}`}>Skills</div>
-        <div className={`dev-about__tag-cloud ${v}`}>
-            {["Creative", "Detail-oriented", "Problem solver", "Collaborator", "Curious"].map((tag) => (
-              <span key={tag} className="dev-tag">{tag}</span>
-            ))}
-          </div>
+      
         <div className="dev-skills__grid">
           {skills.map((skill, i) => (
             <div key={skill.name} className={`dev-skill-card ${v}`} style={{ transitionDelay: `${0.1 * i}s` }}>
